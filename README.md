@@ -1,17 +1,18 @@
 # Environment to reproduce 32bits colm compiling error
-Note that it needs more than 5GB of free disk space to pull it.
-You also can't be running any Virtual Machine at the same time (VirtualBox at least) or the qemu emulator in the Docker won't be able to start.
+Note that it needs more than **5GB** of free disk space to pull it.
+
+You also **can't be running any Virtual Machine at the same time** (VirtualBox at least) or the qemu emulator in the Docker won't be able to start (see `Error on start` at the bottom of this README).
 
 
-# Build
-
+# Pull the image
 ```bash
-docker build -t colm_environment .
+docker pull awesomebytes/colm_docker
 ```
+
 # Run
 
 ```bash
-docker run --privileged -v $HOME:/shared -it colm_environment
+docker run --privileged -v $HOME:/shared -it awesomebytes/colm_environment
 ```
 
 Start the VM with the environment:
@@ -34,4 +35,28 @@ make
 # Wait a minute and you'll get:
 # ./bootstrap1 -c -o gen/parse2.c -e gen/if2.h -x gen/if2.cc colm.lm
 # bootstrap1: tree.c:953: colm_tree_downref: Assertion `tree->refs > 0' failed.
+```
+
+
+# Build
+You can also build the image yourself, it will take a while as it needs
+to download a 4GB file and download & install 200mb worth of ubuntu packages.
+
+```bash
+docker build -t colm_environment .
+```
+
+Then your run command will be instead:
+
+```bash
+docker run --privileged -v $HOME:/shared -it colm_environment
+```
+
+
+# Error on start
+The error in that case is:
+
+```
+ioctl(KVM_CREATE_VM) failed: 16 Device or resource busy
+failed to initialize KVM: Device or resource busy
 ```
