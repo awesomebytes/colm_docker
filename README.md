@@ -3,6 +3,8 @@ Note that it needs more than **5GB** of free disk space to pull it.
 
 You also **can't be running any Virtual Machine at the same time** (VirtualBox at least) or the qemu emulator in the Docker won't be able to start (see `Error on start` at the bottom of this README).
 
+My host system had `virtualbox-5.2` installed, which may pull some  virtualization related dependencies to make this docker image work... if it doesn't work, you may need to install those.
+
 
 # Pull the image
 ```bash
@@ -38,7 +40,7 @@ make
 ```
 
 
-# Build
+# Build if you prefer
 You can also build the image yourself, it will take a while as it needs
 to download a 4GB file and download & install 200mb worth of ubuntu packages.
 
