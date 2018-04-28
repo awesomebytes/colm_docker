@@ -6,13 +6,13 @@ You also **can't be running any Virtual Machine at the same time** (VirtualBox a
 
 # Pull the image
 ```bash
-docker pull awesomebytes/colm_docker
+docker pull awesomebytes/colm_environment:1
 ```
 
 # Run
 
 ```bash
-docker run --privileged -v $HOME:/shared -it awesomebytes/colm_environment
+docker run --privileged -v $HOME:/shared -it awesomebytes/colm_environment:1
 ```
 
 Start the VM with the environment:
